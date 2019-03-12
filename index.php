@@ -24,6 +24,42 @@
         [9,7,5,3,2,6,4,1,8]
     ];
 
+    $set3 = [
+        [6,3,9,2,4,1,7,8,5],
+        [2,8,4,7,6,5,1,9,3],
+        [5,1,7,9,8,3,"Hello!",2,4],
+        [1,2,3,8,5,7,9,4,6],
+        [7,9,6,4,3,2,8,5,1],
+        [4,5,8,6,1,9,2,3,7],
+        [3,4,2,1,7,8,5,6,9],
+        [8,6,1,5,9,4,3,7,2],
+        [9,7,5,3,2,6,4,1,8]
+    ];
+
+    $set4 = [
+        [6,3,9,2,4,1,7,8,5],
+        [2,8,4,7,6,5,1,9,3],
+        [5,1,7,9,null,3,6,2,4],
+        [1,2,3,8,5,7,9,4,6],
+        [7,9,6,4,3,2,8,5,1],
+        [4,5,8,6,1,9,2,3,7],
+        [3,4,2,1,7,8,5,6,9],
+        [8,6,1,5,9,4,3,7,2],
+        [9,7,5,3,2,6,4,1,8]
+    ];
+
+    $set5 = [
+        [6,3,9,2,4,1,7,8,5],
+        [2,8,4,7,6,5,9,3],
+        [5,1,7,9,8,3,6,2,4],
+        [1,2,3,8,5,7,9,4,6],
+        [7,9,6,4,3,2,8,5,1],
+        [4,5,8,6,1,9,2,3,7],
+        [3,4,2,1,7,8,5,6,9],
+        [8,6,1,5,9,4,3,7,2],
+        [9,7,5,3,2,6,4,1,8]
+    ];
+
     // I found this little beauty on the web that is a one liner matrix rotation script 90 degress right
     function rotate_grid($set) {
         return call_user_func_array('array_map',array(-1 => null) + array_map('array_reverse', $set));
@@ -105,3 +141,9 @@
     echo sudokuValidator($set) ? "yeah! set 1\n" : "booo set 1\n";
 
     echo sudokuValidator($set2) ? "yeah! set 2\n" : "booo set 2\n";    
+    
+    echo sudokuValidator($set3) ? "yeah! set 3\n" : "booo set 3\n";
+
+    echo sudokuValidator($set4) ? "yeah! set 4\n" : "booo set 4\n";    
+    
+    echo sudokuValidator($set5) ? "yeah! set 5\n" : "booo set 5\n";
