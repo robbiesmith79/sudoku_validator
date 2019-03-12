@@ -119,7 +119,7 @@
             }
                         
             
-            // if we strip out the duplicates do we still get the same number of numberss
+            // if we strip out the duplicates do we still get the same number of numbers
             if (count($numbers) != count(array_unique($numbers))) {
                 return false;
             }
