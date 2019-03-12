@@ -14,7 +14,7 @@
 
     $set2 = [
         [6,3,9,2,4,1,7,8,5],
-        [2,8,4,7,6,5,1,9,3],
+        [2,8,4,7,6,5,10,9,3],
         [5,1,7,9,8,3,6,2,4],
         [1,2,3,8,5,7,9,4,6],
         [7,9,6,4,3,2,8,5,1],
@@ -68,33 +68,30 @@
     // this is probably the easiest one to examine
     function validate($set) {
         foreach($set as $row => $numbers) {
+            // remove all elements in the array that are not within the number range 1-9
+            foreach ($numbers as $col => $number) {
+                if ($number > 0 && $number < 10 && is_numeric($set[$row][$col])) {
+                    // great!
+                } else {
+                    if (is_string($number) || is_null($number)) {
+                        return false; // just bad data
+                    }
+                    array_splice($numbers[$col],1);  // remove that square and reindex. Will use the count function later.
+                }
+            }
+
             // just quickly check to see if the numbers in the row are all filled in
             if (sizeof($numbers) != 9) {
                 return false;
             }
+                        
             
             // if we strip out the duplicates do we still get the same number of numberss
             if (count($numbers) != count(array_unique($numbers))) {
                 return false;
             }
 
-            // now go down the numbers array turning on the found bit for each number
-            $seen = [0,0,0,0,0,0,0,0,0];
-            foreach($numbers as $index => $number) {
-                $seen[$index] = 1;
-            }
-
-            // add all the numbers in $seen, it should be equal to 9
-            $all_nine = 0;
-            foreach ($seen as $number) {
-                if ($number == 1) {
-                    $all_nine++;
-                }
-            }
             
-            if ($all_nine != 9) {
-                return false;
-            }
         }
         return true;
     }
